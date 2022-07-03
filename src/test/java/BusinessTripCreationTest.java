@@ -27,7 +27,6 @@ class BusinessTripCreationTest extends BaseTests {
 
     @Test
     void businessTripCreationTest() {
-        WebDriver driver = getWebdriver();
         LocalDate currentDate = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         String testDate = currentDate.format(formatter);
