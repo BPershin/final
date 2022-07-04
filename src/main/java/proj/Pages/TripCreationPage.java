@@ -1,6 +1,6 @@
 package proj.Pages;
 
-import jdk.jfr.Description;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -56,50 +56,50 @@ public class TripCreationPage extends BaseTests {
     @FindBy(css = "ui-state-default ui-state-active ui-state-hover ui-state-highlight")
     WebElement selectedCell;
 
-    @Description("Открывает drop down выбора Подразделений")
 
+    @Step("Открываем выпадашку 'Подразделения'")
     public void clickSubdivisionExpandButton() {
         waitElement(selfLocator);
         subdivisionExpandButton.click();
     }
 
-    @Description("Выбирает конкретное подразделение из списка")
+
     public void selectSubdivision(String subdivisionName) {
         subdivisionExpandButton.findElement(By.xpath(".//option[text() ='" + subdivisionName + "']")).click();
         isFieldSetUpCorrectly(selectedSubDiv.getText(), subdivisionName);
     }
 
-    @Description("Нажимает на Открыть список")
+
     public void clickToHostOrganisationList() {
 
         waitUtilElementToBeClickable(companySelectorLink);
         companySelectorLink.click();
     }
 
-    @Description("Открывает drop-down список Организаций")
+
     public void expandHostOrganisationList() {
 
         waitUtilElementToBeClickable(companySelectorDropDown);
         companySelectorDropDown.click();
     }
 
-    @Description("Выбирает конкретную организацию из списка")
+
     public void selectHostOrganisationFromList(String hostOrganisation) {
         waitElement(dropDownResults);
-        var currentHostOrg = dropDownResults.findElement(By.xpath("//div[text()='" + hostOrganisation + "']"));
+        WebElement currentHostOrg = dropDownResults.findElement(By.xpath("//div[text()='" + hostOrganisation + "']"));
         waitUtilElementToBeClickable(currentHostOrg);
         currentHostOrg.click();
         isFieldSetUpCorrectly(companySelectorDropDown.getText(), hostOrganisation);
     }
 
-    @Description("Проставляет чек-бокс на конкретной задаче")
+
     public void selectTasksCheckBox(String taskName) {
-        var currentTask = tasksArea.findElement(By.xpath("//label[text()='" + taskName + "']//preceding-sibling::input"));
+        WebElement currentTask = tasksArea.findElement(By.xpath("//label[text()='" + taskName + "']//preceding-sibling::input"));
         currentTask.click();
         isCheckBoxSelected(currentTask);
     }
 
-    @Description("Устанавливает значение в поле Город выбытия")
+
     public void setDepartureCity(String depCityName) {
         waitUtilElementToBeClickable(depCityInput);
         depCityInput.click();
@@ -108,7 +108,7 @@ public class TripCreationPage extends BaseTests {
         isFieldSetUpCorrectly(depCityInput.getAttribute("value"), depCityName);
     }
 
-    @Description("Устанавливает значение в поле Город прибытия")
+
     public void setArrivalCity(String arrCityName) {
         waitUtilElementToBeClickable(arrCityInput);
         arrCityInput.click();
@@ -117,7 +117,7 @@ public class TripCreationPage extends BaseTests {
         isFieldSetUpCorrectly(arrCityInput.getAttribute("value"), arrCityName);
     }
 
-    @Description("Устанавливает значение в поле Дата выезда")
+
     public void setDepartureDate(String departureDate) {
         waitUtilElementToBeClickable(departureDateInput);
         departureDateInput.click();
@@ -127,7 +127,7 @@ public class TripCreationPage extends BaseTests {
         isFieldSetUpCorrectly(departureDateInput.getAttribute("value"), departureDate);
     }
 
-    @Description("Устанавливает значение в поле Дата приезда")
+
     public void setArrivalDate(String arrivalDate) {
         arrivalDateInput.click();
         arrivalDateInput.clear();
@@ -136,7 +136,7 @@ public class TripCreationPage extends BaseTests {
         isFieldSetUpCorrectly(arrivalDateInput.getAttribute("value"), arrivalDate);
     }
 
-    @Description("Нажатие на кнопку Сохранить и закрыть")
+
     public void saveAndClose() {
         saveAndCloseButton.click();
     }

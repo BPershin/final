@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import proj.properties.TestProperties;
-
+import  org.openqa.selenium.TakesScreenshot;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 

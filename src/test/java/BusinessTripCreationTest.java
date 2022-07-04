@@ -1,5 +1,7 @@
 import extension.DriverExtension;
+import io.qameta.allure.Severity;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
@@ -14,9 +16,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Properties;
 
+import static io.qameta.allure.SeverityLevel.BLOCKER;
 import static proj.DriverManager.getWebdriver;
 
-@ExtendWith(DriverExtension.class)
+@ExtendWith({DriverExtension.class,AllureExtension.class})
 class BusinessTripCreationTest extends BaseTests {
 
     private final Properties properties = TestProperties.getProperties();
@@ -26,6 +29,8 @@ class BusinessTripCreationTest extends BaseTests {
     private final TripsCreationPageSteps tripsCreationPageSteps = new TripsCreationPageSteps();
 
     @Test
+    @Severity(BLOCKER)
+    @DisplayName("Создание командировки")
     void businessTripCreationTest() {
         LocalDate currentDate = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
@@ -42,6 +47,7 @@ class BusinessTripCreationTest extends BaseTests {
                 .setOutAndInDates(testDate, testDate)
                 .saveAndClose();
 
-        Assertions.assertEquals("Список командируемых сотрудников не может быть пустым", getAlertOfValidation());
+        Assertions.assertEquals("Список выпроваживаемых сотрудников не может быть пустым",
+                getAlertOfValidation(),"Ошибка в тексте аллерта");
     }
 }
