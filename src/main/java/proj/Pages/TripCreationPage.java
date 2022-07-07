@@ -93,11 +93,11 @@ public class TripCreationPage extends BaseTests {
     }
 
 
-    public void selectTasksCheckBox(String taskName) {
+   /* public void selectTasksCheckBox(String taskName) {
         WebElement currentTask = tasksArea.findElement(By.xpath("//label[text()='" + taskName + "']//preceding-sibling::input"));
         currentTask.click();
         isCheckBoxSelected(currentTask);
-    }
+    }*/
 
 
     public void setDepartureCity(String depCityName) {
